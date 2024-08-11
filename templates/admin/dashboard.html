@@ -1,0 +1,49 @@
+{% extends "admin/layout.html" %}
+{% block main %}
+    <div style="background-color: aqua; height: 100vh;width: 80vw;">
+        <div style="background-color: bisque;height: 20%; display: flex; gap:10px">
+            <div style="background-color: blueviolet; width: 33%;">
+                <h2>Active Campaigns</h2>
+            </div>
+            <div style="background-color: blueviolet; width: 33%;">
+                <h2>Completed Campaigns</h2>
+                
+            </div>
+            <div style="background-color: blueviolet; width: 33%;">
+                <h2>Total Ad requests</h2>
+            </div>
+            
+
+        </div>
+        <div style="display: flex; height: 50%; gap:10px;margin: 0;">
+            <div style="background-color: brown; height: 100%; width: 50%;">
+                <h2>Incoming Ad request</h2>
+                <div style="width: 600px; height: 50px; background-color: antiquewhite; margin-left: 20px; display: flex; justify-content: space-between;">
+                    <p style="margin-left: 20px;">influencer name</p>
+                    <p style="margin-left: 20px;">campaign name</p>
+
+                    <div style="display: flex;justify-content: end; gap:5px">
+                        <button style="width: 70px; margin-top: 5px;margin-bottom: 5px; background-color:   rgb(128, 126, 0); color: white; font-weight: bold; border: 2px solid rgb(128, 126, 0); border-radius: 10px;">Info</button>
+                        <button style="width: 70px; margin-top: 5px;margin-bottom: 5px; background-color: green; color: white; font-weight: bold; border: 2px solid green; border-radius: 10px;">Accept</button>
+                        <button style="width: 70px; margin-top: 5px;margin-bottom: 5px; background-color:   red; color: white; font-weight: bold; border: 2px solid red; border-radius: 10px;">Reject</button>
+                    </div>
+                </div>
+            </div>
+            <div style="background-color: brown; height: 100%; width: 50%;">
+                <h2>Outgoing Ad request</h2>
+                <div style="width: 600px; height: 50px; background-color: antiquewhite; margin-left: 20px; display: flex; justify-content: space-between;">
+                    <p style="margin-left: 20px;">influencer name</p>
+                    <p style="margin-left: 20px;">campaign name</p>
+                    <div style="display: flex;justify-content: end; gap:5px">
+                       <p>status</p>
+                        <button style="width: 70px; margin-top: 5px;margin-bottom: 5px; background-color:   red; color: white; font-weight: bold; border: 2px solid red; border-radius: 10px;">cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="background-color: aquamarine; height: 30%;width: 100%; margin: 0;">
+            <h2>Accepted Ad request</h2>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<div style="display: flex;flex-direction: column;align-items: center;height: 100vh;margin: 0;">
+    <h1 style="font-size: 40px;">Welcome to Campiner!!</h1> 
+    <div style="display: flex;justify-content: center;gap: 20px; width: 100%;max-width: 500px;padding: 10px;" >
+        <a href="{{url_for('SignIn')}}">
+            <button style="font-size: 15px;font-weight: bold;color: grey; font-style: italic; margin: 0;border:2px solid black; width:200px;height:50px; border-radius: 10px;cursor:pointer;background-color:aliceblue;">Login</button></a>
+        <a href="{{url_for('register')}}">
+            <button style="font-size: 15px;font-weight: bold;color: grey; font-style: italic; margin: 0;border:2px solid black; width:200px;height:50px; border-radius: 10px;cursor:pointer;background-color:aliceblue;">Register</button>
+        </a>
+
+    </div>
+{% endblock %}

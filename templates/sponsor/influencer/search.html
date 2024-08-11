@@ -1,0 +1,55 @@
+{% extends "sponsor/influencer/layout.html" %}
+
+{% block search %}
+<div style="max-width: 75vw;">
+    <h1 style="width: auto;">Results:</h1>
+    <div style="display: flex; flex-direction: row;">
+    {% for influencer in searchedData %}
+        <div style=" background-color:darkslategray;color: white; width: 500px; padding: 10px;border: 2px solid white;border-radius: 10px">
+        <h2 style="text-align: center;">{{influencer.username}}</h2>
+        <button onclick="{document.getElementById('{{influencer.username}}').style.display = 'block'}" style="width: 100%; height: 35px;background-color: aliceblue;font-style: italic;border: 2px solid white;border-radius: 10px; cursor: pointer;">know more</button>
+            
+            <div id="{{influencer.username}}" style="display: none;  position: fixed;left: 50%;top: 50%;transform: translate(-50%, -50%);width: 500px;padding: 30px;background: #fff;border: 2px solid gray;border-radius: 10px; box-shadow: 0px 0px 100px 10px;
+            z-index: 1000; color: black; ">
+                <button onclick="{document.getElementById('{{influencer.username}}').style.display = 'none'}" style="width: 70px; height: 30px;background-color:rgb(247, 123, 123);font-style: italic;border: 2px solid rgb(247, 123, 123);border-radius: 10px; cursor: pointer; ">close X</button>
+                <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;"> 
+                    <h1 style="font-weight: bolder; font-size: 50px;margin: 0;">{{influencer.name}}</h1>
+                    <h2 style="margin-top: 0; color: gray ;font-style: italic;">{{influencer.username}}</h2>
+                </div> 
+            
+                <p> <span style="font-weight: bold;font-size: 20px; color: black;">Category</span> : <span style="font-size: 15px; color: rgb(90, 89, 89);">{{influencer.category}}</span></p>
+                <p> <span style="font-weight: bold;font-size: 20px; color: black;">Niche</span> : <span style="font-size: 15px; color:  rgb(90, 89, 89);">{{influencer.niche}}</span></p>
+                <p> <span style="font-weight: bold;font-size: 20px; color: black;">Follower Count</span> : <span style="font-size: 15px; color:  rgb(90, 89, 89);">{{influencer.follower_count}}</span></p>
+                <p> <span style="font-weight: bold;font-size: 20px; color: black;">Following Count</span> : <span style="font-size: 15px; color:  rgb(90, 89, 89);">{{influencer.following_count}}</span></p>   
+                <form action="{{url_for('sponsor_ad_request')}}" method="post">
+                    <div style="width:200px;">
+                        
+
+                        <select name="influencer" value="influencer"  style="display: flex; justify-content: center; margin: 10px;background-color: aliceblue; width: 470px; height: 50px;border: 2px solid grey;border-radius:10px;">
+                            <option name="influencer" value="{{influencer.username}}" selected  style="width:200px ;padding: 10px;border: 2px solid grey;border-radius:10px;background-color:aliceblue;color: black;padding: 10px; font-size: 16px;cursor: pointer;">{{influencer.username}}</option>
+                        </select>
+
+
+
+                        <select name="campaign" value="campaign"  style="display: flex; justify-content: center; margin: 10px;background-color: aliceblue; width: 470px; height: 50px;border: 2px solid grey;border-radius:10px;">
+                            <option value="0" selected disabled style="width:200px ;padding: 10px;border: 2px solid grey;border-radius:10px;background-color:aliceblue;color: black;padding: 10px; font-size: 16px;cursor: pointer;">Select campaign:</option>
+                            {% for campaign in campaigns %}
+                                <option name="campaign" value="{{campaign}}" style="width:200px ;padding: 10px;border: 2px solid grey;border-radius:10px;background-color:aliceblue;color: black;padding: 10px; font-size: 16px;cursor: pointer;">{{campaign}}</option>
+                            {% endfor %}
+                        </select>
+                       
+                        <input type="text" name="message" id="message" placeholder="Message for the influencer" style="width:470px;padding: 10px;border: 2px solid grey;border-radius:10px;background-color:aliceblue;color: black;padding: 10px; font-size: 16px; margin: 5px;">
+                        <input type="text" name="requirement" id="requirement" placeholder="Requirement of this AD" style="width:470px ;padding: 10px;border: 2px solid grey;border-radius:10px;background-color:aliceblue;color: black;padding: 10px; font-size: 16px; margin: 5px;">
+                        <input type="number" name="pay" placeholder="Enter the pay amount for this ad" style="width:470px ;padding: 10px;border: 2px solid grey;border-radius:10px;background-color:aliceblue;color: black;padding: 10px; font-size: 16px;margin: 5px;">
+                    </div>
+                    <div style="display: flex; justify-content: center; margin: 10px;">
+                      <button type="submit" style="width:200px ;padding: 10px;border: 2px solid grey;border-radius:10px;background-color:aliceblue;color: black;padding: 10px; font-size: 16px;cursor: pointer;">Create a ad request</button>
+                    </div>
+                </form>
+  
+            </div>
+        </div>
+    {% endfor %} 
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<div style="display: flex;flex-direction: column;align-items: center;height: 100vh;margin: 0;">
+    <h1 style="font-size: 40px;">Register youself!!</h1> 
+    <div style="display: flex;flex-direction: column; justify-content: center;gap: 20px; width: 100%;max-width: 500px;padding: 10px;" >
+            <div  style="display: flex;justify-content: center; gap: 20px;">
+                <a href="{{url_for('influencerAboutSignUp')}}">
+                    <button style="font-size: 15px;font-weight: bold;color: grey; font-style: italic; margin: 0;border:2px solid black; width:200px;height:50px; border-radius: 10px;cursor:pointer;background-color:aliceblue;">Register as Influencer</button>
+                </a>
+    
+                <a href="{{url_for('sponorSignUp')}}">
+                    <button style="font-size: 15px;font-weight: bold;color: grey; font-style: italic; margin: 0;border:2px solid black; width:200px;height:50px; border-radius: 10px;cursor:pointer;background-color:aliceblue;">Register as Sponsor</button>
+                </a>
+            </div>
+           
+            <br>
+            <a href="{{url_for('SignIn')}}" style="margin-top: 10px; text-decoration: none;text-align: center;">
+                Already have an account? LogIn
+            </a>
+    </div>
+{% endblock %}x

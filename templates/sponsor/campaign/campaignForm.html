@@ -1,0 +1,35 @@
+{% extends "sponsor/layout.html" %}
+
+{% block main %}
+
+<div style="display: block;  position: fixed;left: 50%;top: 50%;transform: translate(-50%, -50%);width: 500px;padding: 30px;background: #fff;border: 2px solid gray;border-radius: 10px; box-shadow: 0px 0px 10px 1px;
+z-index: 1000; color: black; ">
+    <h1>{{heading}}</h1>
+            <form action="{{root}}" method="post" style="display: flex;flex-direction: column;">
+        {{ form.hidden_tag() }}
+        <br />
+        {{ form.campaignName(style="font-size: 20px;font-weight: normal;color: grey; font-style: italic;padding-left:15px") }}
+        <br />
+
+        {{ form.description(style="font-size: 20px;font-weight: normal;color: grey; font-style: italic;padding-left:15px") }}
+        <br />
+
+        {{ form.goal(style="font-size: 20px;font-weight: normal;color: grey; font-style: italic;padding-left:15px") }}
+        <br />
+
+        {{ form.budget(style="font-size: 20px;font-weight: normal;color: grey; font-style: italic;padding-left:15px") }}
+        <br />
+        {{form.startDate.label}}
+        {{ form.startDate(style="font-size: 20px;font-weight: normal;color: grey; font-style: italic;padding-left:15px") }}
+        <br />
+        {{form.endDate.label}}
+        {{ form.endDate(style="font-size: 20px;font-weight: normal;color: grey; font-style: italic;padding-left:15px") }}
+        <br />
+
+        {{ form.visibilty(style="font-size: 20px;font-weight: normal;color: grey; font-style: italic;padding-left:15px") }}
+        <br />
+
+        {{ form.submit(style="padding: 10px;border: 2px solid grey;border-radius:10px;background-color:aliceblue;color: black;padding: 10px; font-size: 16px;cursor: pointer;") }}           
+            </form> 
+        </div>
+{% endblock %}

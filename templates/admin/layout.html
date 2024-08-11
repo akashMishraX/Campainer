@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+<div style="display: flex;max-width: 500px;">
+    
+    <navbar>
+        <div style="display: flex; flex-direction: column;justify-content:start; margin: 0%;padding: 20px;background-color:azure;height: 100vh; margin-right: 100px; width: 200px; gap:5px">
+          <a style="text-decoration: none; font-size: 25px;color: black; font-weight: bold;">Admin Dashboard</a>
+          <br>
+          <a  href="#dashboard"  style="text-decoration: none;color: black; margin-top: 10px; ">Home</a>
+          <br>
+          <a href="#profile" style="text-decoration: none;color: black;  ">Profile</a>
+          <br>
+          <a href="#campaign" style="text-decoration: none; color: black; ">Campaign</a>
+          <br>
+          <a href="#sponsor" style="text-decoration: none; color: black; ">Sponsor</a>
+          <br>
+          <a href="#sponsor" style="text-decoration: none; color: black; ">Influencer</a>
+          <a href="{{url_for('logout')}}" style="text-decoration: none; color: black; ">logout</a>
+        </div>
+    </navbar>
+    <div>
+        {% block main %}{% endblock %}
+    </div>
+</div>
+    
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends "sponsor/layout.html" %}
+
+{% block main %}
+
+    <div style="background-color: white; height: 100vh;width: 80vw;">
+        <div style="background-color:white;height: 20%; display: flex; gap:10px">
+            <div style="background-color: rgb(68, 173, 173); width: 33%; display: flex;align-items: center;flex-direction: column; border: 2px solid rgb(68, 173, 173);border-radius: 20px 20px 20px 20px;">
+                <h2 style="font-weight: bold; font-size: 40px; margin: 0; padding-bottom: 30px;color: rgb(3, 51, 45); ">Active Campaigns</h2>
+                <p style="font-size: 60px; margin: 0; font-weight: bolder; color: rgb(3, 51, 45);">{{numberOfActiveCampaign}}</p>
+            </div>
+            <div style=" background-color: rgb(68, 173, 173); width: 33%; display: flex;align-items: center;flex-direction: column; border: 2px solid rgb(68, 173, 173);border-radius: 20px 20px 20px 20px;">
+                <h2 style="font-weight: bold; font-size: 40px; margin: 0; padding-bottom: 30px;color: rgb(3, 51, 45);">Completed Campaigns</h2>
+                <p style="font-size: 60px; margin: 0; font-weight: bolder; color: rgb(3, 51, 45);">{{numberOfCompletedCampaign}}</p>
+                
+            </div>
+            <div style=" background-color: rgb(68, 173, 173); width: 33%; display: flex;align-items: center;flex-direction: column; border: 2px solid rgb(68, 173, 173);border-radius: 20px 20px 20px 20px;">
+                <h2 style="font-weight: bold; font-size: 40px; margin: 0; padding-bottom: 30px;color: rgb(3, 51, 45);">Total Ad requests</h2>
+                <p style="font-size: 60px; margin: 0; font-weight: bolder; color: rgb(3, 51, 45);">{{totalNumberOfAdRequest}}</p>
+            </div>
+            
+
+        </div>
+        <div style="display: flex; height: 50%; gap:10px;margin: 0; margin-top: 5px;">
+            <div style="background-color: rgb(159, 212, 212); height: 100%; width: 50%; border: 2px solid rgb(159, 212, 212);border-radius: 20px 20px 20px 20px;">
+                <h2 style="margin-left: 20px;">Incoming Ad request <span>(#)</span></h2>
+                {% for incoming in incomingAdRequest %}
+                    <div style="padding: 4px;width: 600px; height: 50px; background-color: azure; margin-left: 20px; display: flex; justify-content: space-between;border: 2px solid rgb(159, 212, 212);border-radius: 10px 10px 10px 10px;">
+                        <p style="margin-left: 20px;">{{incoming.influencer_username}}</p>
+
+                        <div style="display: flex;justify-content: end; gap:5px">
+                        <!-- info and its functionality -->
+                            <button onclick="{document.getElementById('{{incoming.influencer_username}}').style.display = 'block'}" style="width: 70px; margin-top: 5px;margin-bottom: 5px; background-color:   rgb(230, 229, 189); color: rgb(3, 51, 45); font-weight: bold; border: 2px solid rgb(128, 126, 0); border-radius: 10px; cursor: pointer;">Info</button>
+
+                            <div id="{{incoming.influencer_username}}" style="display: none;  position: fixed;left: 50%;top: 50%;transform: translate(-50%, -50%);width: 500px;padding: 30px;background: #fff;border: 2px solid gray;border-radius: 10px; box-shadow: 0px 0px 100px 10px;
+                            z-index: 1000; color: black; ">
+                                <button onclick="{document.getElementById('{{incoming.influencer_username}}').style.display = 'none'}" style="width: 70px; height: 30px;background-color:rgb(247, 123, 123);font-style: italic;border: 2px solid rgb(247, 123, 123);border-radius: 10px; cursor: pointer; ">close X</button>
+                             <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;"> 
+                                    <h1 style="font-weight: bolder; font-size: 50px;margin: 0;">{{incoming.influencer_username}}</h1>
+                                    
+                                </div> 
+                               
+                                <p> <span style="font-weight: bold;font-size: 20px; color: black;">Campaign Name</span> : <span style="font-size: 15px; color: rgb(90, 89, 89);">{{incoming.campaign_name}}</span></p>
+                                <p> <span style="font-weight: bold;font-size: 20px; color: black;">Message</span> : <span style="font-size: 15px; color: rgb(90, 89, 89);">{{incoming.message}}</span></p>
+                                <p> <span style="font-weight: bold;font-size: 20px; color: black;">Requirement</span> : <span style="font-size: 15px; color:  rgb(90, 89, 89);">{{incoming.requirement}}</span></p>
+                                <p> <span style="font-weight: bold;font-size: 20px; color: black;">Pay</span> : <span style="font-size: 15px; color:  rgb(90, 89, 89);">{{incoming.pay}}</span></p> 
+                        </div>
+
+                        <!-- end -->
+
+                            <button style="width: 70px; margin-top: 5px;margin-bottom: 5px; background-color: rgb(172, 240, 172); color: rgb(3, 51, 45); font-weight: bold; border: 2px solid green; border-radius: 10px; cursor: pointer;">Accept</button>
+                            <button style="width: 70px; margin-top: 5px;margin-bottom: 5px; background-color:   rgb(245, 170, 170); color: rgb(3, 51, 45); font-weight: bold; border: 2px solid red; border-radius: 10px; cursor: pointer;">Reject</button>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div style="background-color: rgb(159, 212, 212); height: 100%; width: 50%; border: 2px solid rgb(159, 212, 212);border-radius: 20px 20px 20px 20px;">
+                <h2 style="margin-left: 20px;"">Outgoing Ad request <span>(#)</span></h2>
+                {% for outgoing in outGoingAdRequest %}
+                    <div style="padding: 4px;width: 600px; height: 50px; background-color: azure; margin-left: 20px; display: flex; justify-content: space-between;border: 2px solid rgb(159, 212, 212);border-radius: 10px 10px 10px 10px;">
+                        <p style="margin-left: 20px;">{{outgoing.influencer_username}}</p>
+                        <div style="display: flex;justify-content: end; gap:10px">
+                            <p style="font-style: italic; color: grey;">{{outgoing.status}}</p>
+                            <!-- info and its functionality -->
+                            <button onclick="{document.getElementById('{{outgoing.influencer_username}}').style.display = 'block'}" style="width: 70px; margin-top: 5px;margin-bottom: 5px; background-color:   rgb(230, 229, 189); color: rgb(3, 51, 45); font-weight: bold; border: 2px solid rgb(128, 126, 0); border-radius: 10px; cursor: pointer;">Info</button>
+
+                            <div id="{{outgoing.influencer_username}}" style="display: none;  position: fixed;left: 50%;top: 50%;transform: translate(-50%, -50%);width: 500px;padding: 30px;background: #fff;border: 2px solid gray;border-radius: 10px; box-shadow: 0px 0px 100px 10px;z-index: 1000; color: black; ">
+                                <button onclick="{document.getElementById('{{outgoing.influencer_username}}').style.display = 'none'}" style="width: 70px; height: 30px;background-color:rgb(247, 123, 123);font-style: italic;border: 2px solid rgb(247, 123, 123);border-radius: 10px; cursor: pointer; ">close X</button>
+                                <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;"> 
+                                    <h1 style="font-weight: bolder; font-size: 50px;margin: 0;">{{outgoing.influencer_username}}</h1>
+                                    
+                                </div> 
+                               
+                                <p> <span style="font-weight: bold;font-size: 20px; color: black;">Campaign Name</span> : <span style="font-size: 15px; color: rgb(90, 89, 89);">{{outgoing.campaign_name}}</span></p>
+                                <p> <span style="font-weight: bold;font-size: 20px; color: black;">Message</span> : <span style="font-size: 15px; color: rgb(90, 89, 89);">{{outgoing.message}}</span></p>
+                                <p> <span style="font-weight: bold;font-size: 20px; color: black;">Requirement</span> : <span style="font-size: 15px; color:  rgb(90, 89, 89);">{{outgoing.requirement}}</span></p>
+                                <p> <span style="font-weight: bold;font-size: 20px; color: black;">Pay</span> : <span style="font-size: 15px; color:  rgb(90, 89, 89);">{{outgoing.pay}}</span></p> 
+                            </div>
+
+                        <!-- end -->
+                            <button style="width: 70px; margin-top: 5px;margin-bottom: 5px; background-color:  rgb(245, 170, 170); color: rgb(3, 51, 45); font-weight: bold; border: 2px solid red; border-radius: 10px; cursor: pointer;">cancel</button>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div style="background-color: darkslategray; height: 30%;width: 100%; margin: 0;margin-top: 10px; border: 2px solid darkslategray;border-radius: 20px 20px 20px 20px; color: rgb(180, 192, 192);">
+            <h2 style="margin-left: 20px;"">Accepted Ad request</h2>
+        </div>
+    </div>
+{% endblock %}

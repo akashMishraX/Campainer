@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block title %}Sign Up {% endblock %}
+
+{% block body %}
+
+<h1>Admin Sign Up</h1> 
+
+<form  action="{{url_for('adminSignUp')}}" method="POST">
+    {{ form.hidden_tag() }}
+    <br />
+    {{ form.name() }}
+    <br />
+    {{ form.username() }}
+    <br />
+    {{ form.password() }}
+    <br />
+    {{ form.email() }}
+    <br/>
+    {{ form.phone() }}
+    <br />
+    {{ form.country() }}
+    <br />
+    {{ form.state() }}
+    <br />
+    {{ form.city() }}
+    <br />
+    {{ form.pin_code() }}
+    <br />
+    {{ form.address_description() }}
+    <br />
+    {{ form.submit() }}
+</form>
+{% endblock %}
