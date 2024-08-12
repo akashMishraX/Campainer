@@ -7,10 +7,7 @@ https://github.com/akashMishraX/Campainer.git
 ```
 ## Create a virtual environment
 ```sh
-pip install virtualenv
-```
-```sh
-python3 -m venv env
+pip install virtualenv && python3 -m venv env
 ```
 ## Initiate the enviornment
 ```sh
