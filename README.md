@@ -16,6 +16,10 @@ python3 -m venv env
 ```sh
 source env/bin/activate
 ```
+## Install all python packages 
+```sh
+pip install -r requirement.txt
+```
 ## Start the server
 ```sh
 python3 __init__.py
